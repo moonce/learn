@@ -30,12 +30,11 @@ public class TwoSum {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 if (nums[j] == target - nums[i]) {
-//                    return new int[] { i, j };
+                    return new int[] { i, j };
                 }
             }
         }
-        return nums;
-//        throw new IllegalArgumentException("No two sum solution");
+        throw new IllegalArgumentException("No two sum solution");
     }
 
     /**
@@ -59,11 +58,10 @@ public class TwoSum {
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
             if (map.containsKey(complement) && map.get(complement) != i) {
-//                return new int[] { i, map.get(complement) };
+                return new int[] { i, map.get(complement) };
             }
         }
-        return nums;
-//        throw new IllegalArgumentException("No two sum solution");
+        throw new IllegalArgumentException("No two sum solution");
     }
 
     /**
@@ -82,12 +80,11 @@ public class TwoSum {
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
             if (map.containsKey(complement)) {
-//                return new int[] { map.get(complement), i };
+                return new int[] { map.get(complement), i };
             }
             map.put(nums[i], i);
         }
-        return nums;
-//        throw new IllegalArgumentException("No two sum solution");
+        throw new IllegalArgumentException("No two sum solution");
     }
 
     /**
@@ -96,11 +93,18 @@ public class TwoSum {
      */
     public static void main(String[] args) {
         System.out.println("开始生成数组");
-        int[] nums = GetArrayUtil.getArray(1000000);
+        int[] nums = GetArrayUtil.getArray(100000);
         int target = 9;
         long startTime=0L,consumingTime=0L;
         System.out.println("数组生成完成");
         System.out.println("开始测试");
+
+        startTime = TimeUtils.getNewDateTime();
+        twoSum1(nums,target);
+        consumingTime = TimeUtils.getNewDateTime() - startTime;
+        System.out.println("twoSum1耗时:"+(consumingTime));
+
+
         startTime = TimeUtils.getNewDateTime();
         twoSum2(nums,target);
         consumingTime = TimeUtils.getNewDateTime() - startTime;
@@ -111,10 +115,7 @@ public class TwoSum {
         consumingTime = TimeUtils.getNewDateTime() - startTime;
         System.out.println("twoSum3耗时:"+(consumingTime));
 
-        startTime = TimeUtils.getNewDateTime();
-        twoSum1(nums,target);
-        consumingTime = TimeUtils.getNewDateTime() - startTime;
-        System.out.println("twoSum1耗时:"+(consumingTime));
+
 
     }
 }
