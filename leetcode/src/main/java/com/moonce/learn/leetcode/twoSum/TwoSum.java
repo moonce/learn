@@ -34,6 +34,7 @@ public class TwoSum {
                 }
             }
         }
+//        return nums;
         throw new IllegalArgumentException("No two sum solution");
     }
 
@@ -61,6 +62,7 @@ public class TwoSum {
                 return new int[] { i, map.get(complement) };
             }
         }
+//        return nums;
         throw new IllegalArgumentException("No two sum solution");
     }
 
@@ -84,6 +86,7 @@ public class TwoSum {
             }
             map.put(nums[i], i);
         }
+//        return nums;
         throw new IllegalArgumentException("No two sum solution");
     }
 
@@ -93,7 +96,7 @@ public class TwoSum {
      */
     public static void main(String[] args) {
         System.out.println("开始生成数组");
-        int[] nums = GetArrayUtil.getArray(100000);
+        int[] nums = GetArrayUtil.getArray(100000000);
         int target = 9;
         long startTime=0L,consumingTime=0L;
         System.out.println("数组生成完成");
@@ -103,7 +106,6 @@ public class TwoSum {
         twoSum1(nums,target);
         consumingTime = TimeUtils.getNewDateTime() - startTime;
         System.out.println("twoSum1耗时:"+(consumingTime));
-
 
         startTime = TimeUtils.getNewDateTime();
         twoSum2(nums,target);
